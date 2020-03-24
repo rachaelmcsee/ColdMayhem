@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     //making variables to check if the player is on the ground
     public Transform bottom;
     public LayerMask groundMask;
-    bool isGrounded;
+    public bool isGrounded;
     public float groundDistance = .3f;
     public float jumpHeight = 5f;
     //making variables to modify movement based on charging a throw

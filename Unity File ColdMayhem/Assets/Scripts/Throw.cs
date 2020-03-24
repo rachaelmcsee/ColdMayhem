@@ -26,6 +26,13 @@ public class Throw : MonoBehaviour
     public Image chargeFill;
     float chargeTime = 0;
 
+    //making variables for the Ammo
+    public int maxAmmo = 10;
+    public int curAmmo = 0;
+    public Text displayAmmo;
+    bool hasAmmo = true;
+    public Gradient ammoTextGradiant;
+
     //creating a bool to prevent firing more than once from the same click
     bool alreadyShot = false;
 
@@ -35,13 +42,16 @@ public class Throw : MonoBehaviour
         chargeBar.maxValue = totalChargeTime;
         chargeFill.color = chargeGradient.Evaluate(0f);
         chargeBar.value = chargeTime;
+        curAmmo = maxAmmo;
+        displayAmmo.text = curAmmo.ToString();
+        displayAmmo.color = ammoTextGradiant.Evaluate(1f);
     }
 
     // Update is called once per frame
     void Update()
     {
         //checking if they are holding the left mouse button
-        if (Input.GetMouseButton(0) && !alreadyShot)
+        if (Input.GetMouseButton(0) && !alreadyShot && hasAmmo)
         {
             //using an if to see if the user has been holding the charge for less time than the total charge time
             if(chargeTime <  totalChargeTime)
@@ -92,16 +102,41 @@ public class Throw : MonoBehaviour
     public void ThrowSnow()
     {
         //setting the spawn of the snowball to the same rotation of the player camera
-        releasePos.rotation = transform.rotation;
+        //releasePos.rotation = transform.rotation;
         //spawning the snowball under the name snowballCopy
         GameObject snowballCopy = Instantiate(snowball, releasePos.position, releasePos.rotation);
         //getting the rigidBody of the copy then aplying force to the copy
         snowballRB = snowballCopy.GetComponent<Rigidbody>();
-        snowballRB.AddForce(transform.forward * chargePower * throwStrength);
+        snowballRB.AddForce(releasePos.forward * chargePower * throwStrength);
         //reseting variables so that the next shot does not get messed up
         chargePower = 1;
         holdTime = 0;
         chargeTime = 0;
         chargeBar.value = chargeTime;
+        //reducing ammo
+        --curAmmo;
+        displayAmmo.text = curAmmo.ToString();
+        //setting the has ammo to false if the current ammo drops to 0 or less
+        if (curAmmo <= 0)
+        {
+            hasAmmo = false;
+            displayAmmo.color = ammoTextGradiant.Evaluate(0f);
+        }
+            
+            
+    }
+
+    //making a method that can be called on item pickup
+    public void GainAmmo(int pickup)
+    {
+        //increases the ammo based on the pickup
+        curAmmo += pickup;
+
+        //if the current ammo is more than the max ammo then the current ammo will be set to the max
+        if (curAmmo > maxAmmo)
+            curAmmo = maxAmmo;
+        hasAmmo = true;
+        displayAmmo.color = ammoTextGradiant.Evaluate(1f);
+        displayAmmo.text = curAmmo.ToString();
     }
 }
