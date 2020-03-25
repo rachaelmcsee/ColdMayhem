@@ -36,6 +36,9 @@ public class Throw : MonoBehaviour
     //creating a bool to prevent firing more than once from the same click
     bool alreadyShot = false;
 
+    //creating a bool that can be viewed from the movement code
+    public bool isCharging = false;
+
     private void Start()
     {
         //assigning the inital values that might depend on public variables
@@ -64,6 +67,8 @@ public class Throw : MonoBehaviour
                 chargeFill.color = chargeGradient.Evaluate(chargeBar.normalizedValue);
                 //sliding the bar as the throw charges
                 chargeBar.value = chargeTime;
+
+                isCharging = true;
             }
             else
             {
@@ -113,6 +118,7 @@ public class Throw : MonoBehaviour
         holdTime = 0;
         chargeTime = 0;
         chargeBar.value = chargeTime;
+        isCharging = false;
         //reducing ammo
         --curAmmo;
         displayAmmo.text = curAmmo.ToString();

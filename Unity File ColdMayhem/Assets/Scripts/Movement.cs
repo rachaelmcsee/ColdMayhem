@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 //I learned this code from the youtuber Brackeys
 //Andrew Mabry (Drew)
 public class Movement : MonoBehaviour
@@ -15,13 +15,12 @@ public class Movement : MonoBehaviour
     //making variables to check if the player is on the ground
     public Transform bottom;
     public LayerMask groundMask;
-    public bool isGrounded;
+    bool isGrounded;
     public float groundDistance = .3f;
     public float jumpHeight = 5f;
-    //making variables to modify movement based on charging a throw
-    bool isCharging;
-    float chargeTime = 0;
-    const int MAX_CHARGE_TIME = 4;
+    //making a variable for the throw code
+    Throw thisThrow;
+    
     //getting the hp from the player so you can tell if you are dead so you freeze
     HP HP;
     float currentHP;
@@ -31,6 +30,8 @@ public class Movement : MonoBehaviour
     {
         //getting a refference to the HP code
         HP = GetComponent<HP>();
+        //getting a refference to the Throw code
+        thisThrow = GetComponent<Throw>();
 
     }
     // Update is called once per frame
@@ -63,28 +64,26 @@ public class Movement : MonoBehaviour
         if (!isDead)
         {
             //reducing speed based on if they are charging the
-            if (Input.GetMouseButton(0) && chargeTime <= MAX_CHARGE_TIME)
+            if (thisThrow.isCharging)
             {
                 thisController.Move(move * moveSpeed / 2 * Time.deltaTime);
-                isCharging = true;
             }
             else
             {
-                //this uses the characterController and the information above to move the character using the move Method
-                thisController.Move(move * moveSpeed * Time.deltaTime);
-                isCharging = false;
+                if(Input.GetButton("Sprint"))
+                {
+                    //this uses the characterController and the information above to move the character using the move Method
+                    thisController.Move(move * moveSpeed * 1.5f * Time.deltaTime);
+                }
+                else
+                {
+                    //this uses the characterController and the information above to move the character using the move Method
+                    thisController.Move(move * moveSpeed * Time.deltaTime);
+                }
+               
             }
         }
-        
-        //counting how long the user is charging for
-        if (Input.GetMouseButton(0))
-        {
-            chargeTime += Time.deltaTime;
-        }
-        else
-        {
-            chargeTime = 0;
-        }
+
 
         velocity.y += gravity * Time.deltaTime;
 
