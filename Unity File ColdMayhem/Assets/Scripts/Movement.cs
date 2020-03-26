@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine; 
 //I learned this code from the youtuber Brackeys
-//Andrew Mabry (Drew)
+//by Andrew Mabry (Drew)
 public class Movement : MonoBehaviour
 {
     //making the variables for movement
@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
     //getting the hp from the player so you can tell if you are dead so you freeze
     HP HP;
     float currentHP;
-    bool isDead = false;
+    public bool isDead = false;
 
     private void Start()
     {

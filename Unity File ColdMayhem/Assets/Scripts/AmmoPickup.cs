@@ -29,5 +29,21 @@ public class AmmoPickup : MonoBehaviour
             }
                
         }
+        if(other.gameObject.tag == "Enemy")
+        {
+            //getting the script information from the player
+            EnemyThrow enemyAmmo = other.gameObject.GetComponent<EnemyThrow>();
+            //checking if the player is at max ammo
+            if (enemyAmmo.curAmmo < enemyAmmo.maxAmmo)
+            {
+                //calling the GainAmmo method passing the ammoAmount variable as an argument
+                enemyAmmo.GainAmmo(ammoAmount);
+                //getting the code for the item's respawn point then settign the got item bool to true
+                PickupRespawn respawn = spawn.GetComponent<PickupRespawn>();
+                respawn.itemGot = true;
+                //removing the pickup
+                Destroy(this.gameObject);
+            }
+        }
     }
 }

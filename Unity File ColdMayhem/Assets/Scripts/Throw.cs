@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//Andrew Mabry (Drew)
+//by Andrew Mabry (Drew)
 
 public class Throw : MonoBehaviour
 {
@@ -39,6 +39,9 @@ public class Throw : MonoBehaviour
     //creating a bool that can be viewed from the movement code
     public bool isCharging = false;
 
+    //getting variable info to make sure the player is alive
+    Movement thisMovement;
+
     private void Start()
     {
         //assigning the inital values that might depend on public variables
@@ -48,13 +51,14 @@ public class Throw : MonoBehaviour
         curAmmo = maxAmmo;
         displayAmmo.text = curAmmo.ToString();
         displayAmmo.color = ammoTextGradiant.Evaluate(1f);
+        thisMovement = GetComponent<Movement>();
     }
 
     // Update is called once per frame
     void Update()
     {
         //checking if they are holding the left mouse button
-        if (Input.GetMouseButton(0) && !alreadyShot && hasAmmo)
+        if (Input.GetMouseButton(0) && !alreadyShot && hasAmmo && !thisMovement.isDead)
         {
             //using an if to see if the user has been holding the charge for less time than the total charge time
             if(chargeTime <  totalChargeTime)
@@ -92,6 +96,9 @@ public class Throw : MonoBehaviour
             //if they were charging it will call the throw command
             if(chargePower > 1 && !alreadyShot)
             {
+                //if your dead then this code makes you drop the snowball infront of you
+                if (thisMovement.isDead)
+                    chargePower = 1;
                 ThrowSnow();
             }
         }

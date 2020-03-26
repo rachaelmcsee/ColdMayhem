@@ -1,0 +1,47 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySight : MonoBehaviour
+{
+    //declaring varibales
+    RaycastHit hit;
+    EnemyMovement moveScript;
+    public bool targetVisible = false;
+    public float range = 40f;
+    //this is used as a buffer because the target is constantly be switched between true and false
+    float delay = 0;
+
+    void Start()
+    {
+        //getting access to the EnemyMovement script to get target and direction info and repeating the SightCheck every little bit to reduce load on the game
+        moveScript = GetComponent<EnemyMovement>();
+        InvokeRepeating("SightCheck", .1f, .3f);
+    }
+
+    void SightCheck()
+    {
+        if (delay > 0)
+        {
+            delay -= .5f;
+        }
+        delay -= .5f;
+        //sends out a ray infront of the enemy and sends the data back to the hit variable
+        Physics.Raycast(transform.position, moveScript.direction, out hit, range);
+        //checking the ray information for the target and then states if the ray hit the target or not
+        if (hit.collider.gameObject == moveScript.targetObject)
+        {
+            delay = 1;
+            targetVisible = true;
+        }
+        else
+        {
+            if(delay <= 0)
+            {
+                targetVisible = false;
+            }
+            
+        }
+
+    }
+}
