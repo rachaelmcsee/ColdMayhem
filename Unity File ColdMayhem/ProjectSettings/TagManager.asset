@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Snowball
   - Enemy
+  - AmmoPickup
   layers:
   - Default
   - TransparentFX

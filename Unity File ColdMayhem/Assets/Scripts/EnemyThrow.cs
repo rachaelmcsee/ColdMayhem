@@ -37,6 +37,10 @@ public class EnemyThrow : MonoBehaviour
     //getting information form the enemy sight script in order to decide if the Enemy will try to fire
     public EnemySight sight;
 
+    bool shouldFire = true;
+
+    
+
 
     public bool test = false;
     private void Start()
@@ -44,7 +48,9 @@ public class EnemyThrow : MonoBehaviour
         //setting the current ammo to the max ammo and then getting a refference to the movement and sight scripts
         curAmmo = maxAmmo;
 
+
         InvokeRepeating("AttemptThrow", 0, .1f);
+        InvokeRepeating("CheckAmmo", 8, 1);
     }
     //this method attempt to throw a snowball by judging the distance and changing the angle
     void AttemptThrow()
@@ -53,8 +59,6 @@ public class EnemyThrow : MonoBehaviour
         //creating a series of if statements to judge the distance
         if (sight.targetVisible)
         {
-            
-            test = true;
             isCharging = true;
             
         }
@@ -68,7 +72,7 @@ public class EnemyThrow : MonoBehaviour
     void Update()
     {
         //checking if they are holding the left mouse button
-        if (isCharging && hasAmmo)
+        if (isCharging && hasAmmo && shouldFire)
         {
             
             //using an if to see if the user has been holding the charge for less time than the total charge time
@@ -81,17 +85,9 @@ public class EnemyThrow : MonoBehaviour
             }
             else
             {
-                //using a second counter to make sure they don't hold a fully charged throw for more than the max hold time
-                if (holdTime < maxHold)
-                {
-                    holdTime += Time.deltaTime;
-                }
-                else
-                {
-                    //forcing a throw if the user keeps holding
-                    ThrowSnow();
-                    //setting a bool variable to true make sure the player doesn't start charging again without releasing the mouse
-                }
+                //forcing a throw if the user keeps holding
+                ThrowSnow();
+              
             }
 
         }
@@ -143,5 +139,59 @@ public class EnemyThrow : MonoBehaviour
         if (curAmmo > maxAmmo)
             curAmmo = maxAmmo;
         hasAmmo = true;
+    }
+
+    //I addapted this code from the youtuber Brackeys 
+    void CheckAmmo()
+    {
+
+        //getting a reference to the movement so that the target can be set to the ammo and to the nav mesh so that the stopping distance can be changed to 0 so the AI will walk all the way to the pickup
+        EnemyMovement movement = GetComponent<EnemyMovement>();
+        
+
+
+        if (curAmmo <= maxAmmo - 5)
+        {
+            //making variables and arrays that store the information of the ammo pickups so that the AI can seek them out 
+            GameObject[] ammoPickups = GameObject.FindGameObjectsWithTag("AmmoPickup");
+            float disToAmmo;
+            float shortestDis = Mathf.Infinity;
+            GameObject closestPickup = null;
+
+            
+            //checking all of the ammoPickups and checking the distance for each from the AI and finding the closest
+            foreach(GameObject pickup in ammoPickups)
+            {
+                disToAmmo = Vector3.Distance(transform.position, pickup.transform.position);
+                if(disToAmmo < shortestDis)
+                {
+                    closestPickup = pickup;
+                    shortestDis = disToAmmo;
+                }
+            }
+
+            PickupRespawn respawn = closestPickup.GetComponent<PickupRespawn>();
+            if(respawn.itemGot == false)
+            {
+                shouldFire = false;
+                movement.ChangeDistance(0);
+                movement.target = closestPickup.transform;
+            }
+            else
+            {
+                shouldFire = true;
+                movement.target = null;
+                movement.AquireTarget();
+                movement.ChangeDistance(movement.toFar);
+            }
+        }
+        else
+        {
+            movement.target = null;
+            test = true;
+            shouldFire = true;
+            movement.AquireTarget();
+            movement.ChangeDistance(movement.toFar);
+        }
     }
 }

@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
         hp = GetComponent<HP>();
         //getting the navMeshAgent and using it to set the stopping distance
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = toFar;
+        ChangeDistance(toFar);
         //calls on the AquireTarget method every 1 second
         InvokeRepeating("AquireTarget", 0, 1);
     }
@@ -54,7 +54,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void AquireTarget()
+    public void AquireTarget()
     {
         //checks if the AI no longer has a target
         if(target == null)
@@ -71,5 +71,10 @@ public class EnemyMovement : MonoBehaviour
         direction = (target.position - transform.position).normalized;
         lookDirection = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookDirection, Time.deltaTime * lookSpeed);
+    }
+
+    public void ChangeDistance(float dist)
+    {
+        agent.stoppingDistance = dist;
     }
 }
