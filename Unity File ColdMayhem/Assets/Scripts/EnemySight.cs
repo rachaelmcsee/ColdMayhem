@@ -21,27 +21,34 @@ public class EnemySight : MonoBehaviour
 
     void SightCheck()
     {
-        if (delay > 0)
+        //checks to make sure that its current enemy is something that should be thrown at
+        if (this.GetComponent<EnemyThrow>().isEnemy && moveScript.targetObject != null)
         {
-            delay -= .5f;
-        }
-        delay -= .5f;
-        //sends out a ray infront of the enemy and sends the data back to the hit variable
-        Physics.Raycast(transform.position, moveScript.direction, out hit, range);
-        //checking the ray information for the target and then states if the ray hit the target or not
-        if (hit.collider.gameObject == moveScript.targetObject)
-        {
-            delay = 1;
-            targetVisible = true;
-        }
-        else
-        {
-            if(delay <= 0)
+            if (delay > 0)
             {
-                targetVisible = false;
+                delay -= .5f;
+            }            
+            //sends out a ray infront of the enemy and sends the data back to the hit variable
+            Physics.Raycast(transform.position, moveScript.direction, out hit, range);
+            //checking the ray information for the target and then states if the ray hit the target or not
+            if(hit.collider != null)
+            {
+                if (hit.collider.gameObject == moveScript.targetObject)
+                {
+                    delay = 1;
+                    targetVisible = true;
+                }
+                else
+                {
+                    if (delay <= 0)
+                    {
+                        targetVisible = false;
+                    }
+                }
             }
             
         }
+        
 
     }
 }

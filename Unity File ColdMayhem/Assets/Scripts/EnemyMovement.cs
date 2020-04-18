@@ -37,14 +37,19 @@ public class EnemyMovement : MonoBehaviour
     }
     void Update()
     {
-        //checking the distance from the player
-        playerDis = Vector3.Distance(target.position, transform.position);
+        if(target != null)
+        {
+            //checking the distance from the player
+            playerDis = Vector3.Distance(target.position, transform.position);
+        }
+        
+        
 
         if (hp.currentHP <= 0)
             isDead = true;
 
         //seeing if the target is too far and if so then moving to the player and if not then making sure that the AI is facing them
-        if(playerDis > toFar && !isDead)
+        if(playerDis > agent.stoppingDistance && !isDead)
         {
             agent.SetDestination(target.position);
         }
@@ -65,7 +70,8 @@ public class EnemyMovement : MonoBehaviour
         if(target == null)
         {
             targetObject = GameObject.FindGameObjectWithTag(targetTag);
-            target = targetObject.transform;
+            if(targetObject != null)
+                target = targetObject.transform;
         }
     }
 
@@ -73,13 +79,14 @@ public class EnemyMovement : MonoBehaviour
     void FaceTarget()
     {
         //getting the direction, converting it inter a usable angle value, then rotating the AI at a fixed rate
-        if(velocity != null)
+        if(velocity != null && target != null)
         {
             direction = ((target.position + (velocity * Time.deltaTime * (playerDis * .2f))) - transform.position).normalized;
         }
         else
         {
-            direction = (target.position - transform.position).normalized;
+            if(target !=null)
+                direction = (target.position - transform.position).normalized;
         }
         
         lookDirection = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -94,16 +101,20 @@ public class EnemyMovement : MonoBehaviour
     //using this to get a rough approximation of velocity of the target
     void CalcVelocity()
     {
-        if(lastPos == null)
+        if(target != null)
         {
-            lastPos = target.position;
-        }
-        else
-        {
-            lastPos = curPos;
-        }
-        curPos = target.position;
+            if (lastPos == null)
+            {
+                lastPos = target.position;
+            }
+            else
+            {
+                lastPos = curPos;
+            }
+            curPos = target.position;
 
-        velocity = (curPos - lastPos) / Time.deltaTime;
+            velocity = (curPos - lastPos) / Time.deltaTime;
+        }
+        
     }
 }

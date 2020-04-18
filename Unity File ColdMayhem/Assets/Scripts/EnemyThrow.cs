@@ -36,7 +36,7 @@ public class EnemyThrow : MonoBehaviour
 
     //getting information form the enemy sight script in order to decide if the Enemy will try to fire
     public EnemySight sight;
-
+    public bool isEnemy = true;
     bool shouldFire = true;
 
     
@@ -163,7 +163,7 @@ public class EnemyThrow : MonoBehaviour
             foreach(GameObject pickup in ammoPickups)
             {
                 disToAmmo = Vector3.Distance(transform.position, pickup.transform.position);
-                if(disToAmmo < shortestDis)
+                if(disToAmmo <= shortestDis)
                 {
                     closestPickup = pickup;
                     shortestDis = disToAmmo;
@@ -174,11 +174,13 @@ public class EnemyThrow : MonoBehaviour
             if(respawn.itemGot == false)
             {
                 shouldFire = false;
+                isEnemy = false;
                 movement.ChangeDistance(0);
                 movement.target = closestPickup.transform;
             }
             else
             {
+                isEnemy = true;
                 shouldFire = true;
                 movement.target = null;
                 movement.AquireTarget();
@@ -187,6 +189,7 @@ public class EnemyThrow : MonoBehaviour
         }
         else
         {
+            isEnemy = true;
             movement.target = null;
             test = true;
             shouldFire = true;
