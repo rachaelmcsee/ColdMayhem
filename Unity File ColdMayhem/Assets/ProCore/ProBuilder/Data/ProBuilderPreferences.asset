@@ -15,6 +15,7 @@ MonoBehaviour:
   m_Bool_keys:
   - pbExtrudeAsGroup
   - pbManifoldEdgeExtrusion
+  - pbCollapseVertexToFirst
   m_Int_keys:
   - pbDefaultEditLevel
   - pbDefaultSelectionMode
@@ -25,7 +26,7 @@ MonoBehaviour:
   m_String_keys: []
   m_Color_keys: []
   m_Material_keys: []
-  m_Bool_values: 0100
+  m_Bool_values: 010001
   m_Int_values: 00000000010000000100000002000000
   m_Float_values:
   - 2.19
