@@ -12,8 +12,18 @@ public class BillboardScript : MonoBehaviour
     {
         if(cam == null)
         {
-            cam = GameObject.FindGameObjectWithTag("MainCamera").transform;
+            //creating a temp gameobject
+            GameObject temp = GameObject.FindGameObjectWithTag("MainCamera");
+            if(temp != null)
+            {
+                cam = temp.transform;
+            }
+            
         }
-        transform.LookAt(transform.position + cam.forward);
+        else
+        {
+            transform.LookAt(transform.position + cam.forward);
+        }
+        
     }
 }

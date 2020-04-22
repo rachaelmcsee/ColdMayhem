@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e00571f648c72d478c2118f065bf0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisPrefab: {fileID: 2462719280193145276, guid: a43285f9ee246ac45bf389237cda76c5,
+  thisPrefab: {fileID: 2462719280193145276, guid: 92927c79ec5783542a82fdd1c33c9dd7,
     type: 3}
   opponentTag: Enemy
   maxHP: 100
@@ -945,7 +945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2358828293610819157}
   m_Layer: 0
-  m_Name: Player (1)
+  m_Name: Player (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

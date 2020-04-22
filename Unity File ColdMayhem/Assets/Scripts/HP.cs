@@ -7,6 +7,11 @@ using UnityEngine.UI;
 
 public class HP : MonoBehaviour
 {
+    //storing the prefab of this character
+    public GameObject thisPrefab;
+    //set this to the tag of the other team
+    public string opponentTag;
+
     //Declaring variables
     public int maxHP = 100;
     public int currentHP;
@@ -17,6 +22,9 @@ public class HP : MonoBehaviour
     public Slider hpBar;
     public Gradient hpGradient;
     public Image hpFill;
+
+    //making a bool to state that the enemy is dead so that they won't try to respawn 2 times
+    bool isDead = false;
 
     private void Start()
     {
@@ -52,8 +60,9 @@ public class HP : MonoBehaviour
         }
         
         //checking to see if the player is alive
-        if (currentHP <= 0)
+        if (currentHP <= 0 && !isDead)
         {
+            isDead = true;
             //calling on deathparticles on a delay to give time for the entity to stop befor playing the particles
             Invoke("DeathParticles", .5f);
         }
@@ -67,6 +76,27 @@ public class HP : MonoBehaviour
     }
     void Death()
     {
+        //setting temp variables for finding the most distance
+        float farthestDis = 0;
+        float dis;
+        GameObject farthestSpawn = null;
+
+
+        //finding all respawn locations then finding the farthest one from the enemy
+        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
+        foreach(GameObject spawnPoint in spawnPoints)
+        {
+            //finding the distance of the spawn then checking if it is farther then the previous farthest if so assigning to the temp variables
+            dis = spawnPoint.GetComponent<RespawnScript>().checkDis(opponentTag);
+            if(dis > farthestDis)
+            {
+                farthestDis = dis;
+                farthestSpawn = spawnPoint;
+            }
+        }
+
+        farthestSpawn.GetComponent<RespawnScript>().Respawn(thisPrefab);
+
         //deleting the player or entity
         Destroy(gameObject);
     }

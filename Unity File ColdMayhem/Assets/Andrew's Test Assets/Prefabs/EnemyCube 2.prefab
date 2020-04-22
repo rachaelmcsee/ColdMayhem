@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 4802282109988924234}
   - component: {fileID: 1524310534}
   m_Layer: 8
-  m_Name: EnemyCube 1
+  m_Name: EnemyCube 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e00571f648c72d478c2118f065bf0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisPrefab: {fileID: 6357450221875571726, guid: 6eb53ec5ccd180043a71c382261a4906,
+  thisPrefab: {fileID: 6357450221875571726, guid: 8f919bd29ba10cd45a9e16c46881b672,
     type: 3}
   opponentTag: Player
   maxHP: 30
