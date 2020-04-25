@@ -9,6 +9,7 @@ TagManager:
   - AmmoPickup
   - Info
   - Victory
+  - RespawnCam
   layers:
   - Default
   - TransparentFX

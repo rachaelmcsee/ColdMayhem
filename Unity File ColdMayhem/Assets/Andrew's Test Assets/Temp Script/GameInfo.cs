@@ -8,4 +8,12 @@ public class GameInfo : MonoBehaviour
     public int playerLives = 3;
     public int enemyLives = 3;
 
+    //variables to hold the character prefabs
+    public GameObject[] playerCharacters;
+    public GameObject[] enemyCharacters;
+
+    public int playerChoice = 0;
+    public int enemyChoice = 0;
+
+
 }

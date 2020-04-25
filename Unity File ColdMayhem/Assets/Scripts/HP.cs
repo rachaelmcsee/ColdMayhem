@@ -26,6 +26,7 @@ public class HP : MonoBehaviour
     //making variables used for game info and to store lives
     GameInfo info;
     int yourLives;
+    public GameObject respawnCam;
 
     //making a bool to state that the enemy is dead so that they won't try to respawn 2 times
     bool isDead = false;
@@ -101,7 +102,7 @@ public class HP : MonoBehaviour
             }
         }
 
-        if(yourLives > 0)
+        if(yourLives > 0 && this.tag == "Enemy")
         {
             //finding all respawn locations then finding the farthest one from the enemy
             GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
@@ -116,21 +117,23 @@ public class HP : MonoBehaviour
                 }
             }
 
-            farthestSpawn.GetComponent<RespawnScript>().Respawn(thisPrefab);
+            farthestSpawn.GetComponent<RespawnScript>().Respawn(info.enemyCharacters[info.enemyChoice]);
         }
         else
         {
+            //if the enemy is out of lives then the player will get a victory display message
             if(this.tag == "Enemy")
             {
                 Text victoryText = GameObject.FindGameObjectWithTag("Victory").GetComponent<Text>();
                 victoryText.text = "Victory";
             }
-            else
-            {
-                
-            }
         }
         
+        if(this.tag == "Player")
+        {
+            respawnCam.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+        }
 
         //deleting the player or entity
         Destroy(gameObject);

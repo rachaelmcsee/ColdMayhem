@@ -15,6 +15,13 @@ public class RespawnScript : MonoBehaviour
         Invoke("Spawn", delay);
     }
 
+    //this method is used for spawning with no delay like both teams at the begining or the player when they hit respawn
+    public void PlayerSpawn(GameObject prefab)
+    {
+        character = prefab;
+        Spawn();
+    }
+
     void Spawn()
     {
         //spawning the character
