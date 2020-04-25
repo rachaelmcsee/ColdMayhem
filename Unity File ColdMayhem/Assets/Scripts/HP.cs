@@ -23,12 +23,17 @@ public class HP : MonoBehaviour
     public Gradient hpGradient;
     public Image hpFill;
 
+    //making variables used for game info and to store lives
+    GameInfo info;
+    int yourLives;
+
     //making a bool to state that the enemy is dead so that they won't try to respawn 2 times
     bool isDead = false;
 
     private void Start()
     {
         //setting the initail values that are based off of public variables
+        info = GameObject.FindGameObjectWithTag("Info").GetComponent<GameInfo>();
         currentHP = maxHP;
         hpBar.maxValue = maxHP;
         hpBar.value = currentHP;
@@ -81,21 +86,51 @@ public class HP : MonoBehaviour
         float dis;
         GameObject farthestSpawn = null;
 
-
-        //finding all respawn locations then finding the farthest one from the enemy
-        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
-        foreach(GameObject spawnPoint in spawnPoints)
+        //reduces the lives of the appropriate team
+        if (this.tag == "Enemy")
         {
-            //finding the distance of the spawn then checking if it is farther then the previous farthest if so assigning to the temp variables
-            dis = spawnPoint.GetComponent<RespawnScript>().checkDis(opponentTag);
-            if(dis > farthestDis)
+            info.enemyLives -= 1;
+            yourLives = info.enemyLives;
+        }
+        else
+        {
+            if(this.tag == "Player")
             {
-                farthestDis = dis;
-                farthestSpawn = spawnPoint;
+                info.playerLives -= 1;
+                yourLives = info.playerLives;
             }
         }
 
-        farthestSpawn.GetComponent<RespawnScript>().Respawn(thisPrefab);
+        if(yourLives > 0)
+        {
+            //finding all respawn locations then finding the farthest one from the enemy
+            GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
+            foreach (GameObject spawnPoint in spawnPoints)
+            {
+                //finding the distance of the spawn then checking if it is farther then the previous farthest if so assigning to the temp variables
+                dis = spawnPoint.GetComponent<RespawnScript>().checkDis(opponentTag);
+                if (dis > farthestDis)
+                {
+                    farthestDis = dis;
+                    farthestSpawn = spawnPoint;
+                }
+            }
+
+            farthestSpawn.GetComponent<RespawnScript>().Respawn(thisPrefab);
+        }
+        else
+        {
+            if(this.tag == "Enemy")
+            {
+                Text victoryText = GameObject.FindGameObjectWithTag("Victory").GetComponent<Text>();
+                victoryText.text = "Victory";
+            }
+            else
+            {
+                
+            }
+        }
+        
 
         //deleting the player or entity
         Destroy(gameObject);

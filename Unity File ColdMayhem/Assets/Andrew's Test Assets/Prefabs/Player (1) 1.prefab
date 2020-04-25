@@ -799,7 +799,7 @@ MonoBehaviour:
   thisPrefab: {fileID: 2462719280193145276, guid: 92927c79ec5783542a82fdd1c33c9dd7,
     type: 3}
   opponentTag: Enemy
-  maxHP: 100
+  maxHP: 30
   currentHP: 0
   KO_Particle: {fileID: 5068557006492371062, guid: 51a4412392ccfe14cbac594cbb4d0590,
     type: 3}
