@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arena Select.unity
     guid: d717b89dcba43e3429fa57d4c052c51e
+  - enabled: 1
+    path: Assets/Scenes/Andrew - TestCode.unity
+    guid: 048f49c1225e93146a5e12ebb5dcfddd
   m_configObjects: {}
