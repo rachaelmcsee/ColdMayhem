@@ -46,6 +46,15 @@ public class EnemySight : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                //this checks to see if the player exists if not then the visibility is set to false
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if(player == null)
+                {
+                    targetVisible = false;
+                }
+            }
             
         }
         

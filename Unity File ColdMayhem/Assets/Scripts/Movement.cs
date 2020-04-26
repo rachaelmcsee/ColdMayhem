@@ -26,6 +26,7 @@ public class Movement : MonoBehaviour
     float currentHP;
     public bool isDead = false;
 
+    public bool isOver = false;
     private void Start()
     {
         //getting a refference to the HP code
@@ -61,7 +62,7 @@ public class Movement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         //if the player is dead they can't move
-        if (!isDead)
+        if (!isDead && !isOver)
         {
             //reducing speed based on if they are charging the
             if (thisThrow.isCharging)

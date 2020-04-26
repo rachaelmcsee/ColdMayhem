@@ -37,7 +37,7 @@ public class EnemyThrow : MonoBehaviour
     //getting information form the enemy sight script in order to decide if the Enemy will try to fire
     public EnemySight sight;
     public bool isEnemy = true;
-    bool shouldFire = true;
+    public bool shouldFire = true;
 
     
 
@@ -71,6 +71,11 @@ public class EnemyThrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null)
+        {
+            shouldFire = false;
+        }
         //checking if they are holding the left mouse button
         if (isCharging && hasAmmo && shouldFire)
         {
@@ -147,10 +152,10 @@ public class EnemyThrow : MonoBehaviour
 
         //getting a reference to the movement so that the target can be set to the ammo and to the nav mesh so that the stopping distance can be changed to 0 so the AI will walk all the way to the pickup
         EnemyMovement movement = GetComponent<EnemyMovement>();
-        
 
 
-        if (curAmmo <= maxAmmo - 5)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (curAmmo <= maxAmmo - 5 || player == null)
         {
             //making variables and arrays that store the information of the ammo pickups so that the AI can seek them out 
             GameObject[] ammoPickups = GameObject.FindGameObjectsWithTag("AmmoPickup");

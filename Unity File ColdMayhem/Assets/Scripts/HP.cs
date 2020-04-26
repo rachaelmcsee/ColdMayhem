@@ -31,6 +31,9 @@ public class HP : MonoBehaviour
     //making a bool to state that the enemy is dead so that they won't try to respawn 2 times
     bool isDead = false;
 
+    //this is a button that can return to the main menu when the game is over
+    public GameObject menuButton;
+
     private void Start()
     {
         //setting the initail values that are based off of public variables
@@ -126,6 +129,15 @@ public class HP : MonoBehaviour
             {
                 Text victoryText = GameObject.FindGameObjectWithTag("Victory").GetComponent<Text>();
                 victoryText.text = "Victory";
+                //this finds the player and sets their is over variables to trues so the player can't move
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Movement>().isOver = true;
+
+                //setting the players return to main menu button to active
+                player.GetComponent<HP>().menuButton.SetActive(true);
+                //setting the LookAround isOver to true
+                GameObject mainCam = GameObject.FindGameObjectWithTag("MainCamera");
+                mainCam.GetComponent<LookAround>().isOver = true;
             }
         }
         
