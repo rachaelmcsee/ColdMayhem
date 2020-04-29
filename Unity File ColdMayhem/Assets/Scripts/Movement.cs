@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
     public float groundDistance = .3f;
-    public float jumpHeight = 5f;
+    public float jumpHeight = 2f;
     //making a variable for the throw code
     Throw thisThrow;
     

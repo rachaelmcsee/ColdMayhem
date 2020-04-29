@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class HP : MonoBehaviour
 {
-    //storing the prefab of this character
-    public GameObject thisPrefab;
+    //this is an empty that holds everything to make the pivit point easy to move.
+    public GameObject empty;
     //set this to the tag of the other team
     public string opponentTag;
 
@@ -148,6 +148,8 @@ public class HP : MonoBehaviour
         }
 
         //deleting the player or entity
+        if (empty != null)
+            Destroy(empty);
         Destroy(gameObject);
     }
 }
