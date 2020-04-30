@@ -14,7 +14,7 @@ public class Throw : MonoBehaviour
     public Transform releasePos;
     public GameObject snowball;
     Rigidbody snowballRB;
-    int chargeAmount = 50;
+    int chargeAmount = 80;
     //determines how much longer after max charge you can hold the snowball and how long it takes to fully charge
     //remember that if you change the charge time or maxHold time then you have to change the movement penalty time!!!
     public float totalChargeTime = 2;

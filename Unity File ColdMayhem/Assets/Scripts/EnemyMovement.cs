@@ -9,12 +9,12 @@ public class EnemyMovement : MonoBehaviour
 {
     //declaring variables
     public Transform target;
-    public float toFar = 9f;
-    NavMeshAgent agent;
+    public float toFar = 12f;
+    public NavMeshAgent agent;
     public float playerDis;
     public Vector3 direction;
     Quaternion lookDirection;
-    public float lookSpeed = 3f;
+    public float lookSpeed = 4f;
     string targetTag = "Player";
     public GameObject targetObject;
     bool isDead = false;
@@ -23,13 +23,13 @@ public class EnemyMovement : MonoBehaviour
     Vector3 velocity;
     Vector3 curPos;
     Vector3 lastPos;
+    //this is used to tell if the enemy is moving
+    bool isStill = false;
 
     private void Start()
     {
         //getting HP info
         hp = GetComponent<HP>();
-        //getting the navMeshAgent and using it to set the stopping distance
-        agent = GetComponent<NavMeshAgent>();
         ChangeDistance(toFar);
         //calls on the AquireTarget method every 1 second
         InvokeRepeating("AquireTarget", 0, 1);
@@ -79,9 +79,9 @@ public class EnemyMovement : MonoBehaviour
     void FaceTarget()
     {
         //getting the direction, converting it inter a usable angle value, then rotating the AI at a fixed rate
-        if(velocity != null && target != null)
+        if(velocity != null && target != null && !isStill)
         {
-            direction = ((target.position + (velocity * Time.deltaTime * (playerDis * .2f))) - transform.position).normalized;
+            direction = ((target.position + (velocity * Time.deltaTime * (playerDis * .3f))) - transform.position).normalized;
         }
         else
         {
@@ -101,6 +101,7 @@ public class EnemyMovement : MonoBehaviour
     //using this to get a rough approximation of velocity of the target
     void CalcVelocity()
     {
+        //confirms that there is a target
         if(target != null)
         {
             if (lastPos == null)
@@ -114,6 +115,15 @@ public class EnemyMovement : MonoBehaviour
             curPos = target.position;
 
             velocity = (curPos - lastPos) / Time.deltaTime;
+
+            if(curPos == lastPos)
+            {
+                isStill = true;
+            }
+            else
+            {
+                isStill = false;
+            }
         }
         
     }

@@ -13,7 +13,7 @@ public class HP : MonoBehaviour
     public string opponentTag;
 
     //Declaring variables
-    public int maxHP = 100;
+    public int maxHP = 30;
     public int currentHP;
     public ParticleSystem KO_Particle;
     public Text hpDisplay;
@@ -22,6 +22,10 @@ public class HP : MonoBehaviour
     public Slider hpBar;
     public Gradient hpGradient;
     public Image hpFill;
+
+    //making an offset for the death particles
+    public float particleOffset = 0;
+    Vector3 particleSpawn;
 
     //making variables used for game info and to store lives
     GameInfo info;
@@ -79,8 +83,11 @@ public class HP : MonoBehaviour
 
     void DeathParticles()
     {
+        //making the position for the particle spawn
+        particleSpawn = transform.position;
+        particleSpawn.y += particleOffset;
         //creating particles for the death and then calling on the death method on a delay
-        Instantiate(KO_Particle, transform.position, transform.rotation);
+        Instantiate(KO_Particle, particleSpawn, transform.rotation);
         Invoke("Death", .5f);
     }
     void Death()
@@ -119,7 +126,7 @@ public class HP : MonoBehaviour
                     farthestSpawn = spawnPoint;
                 }
             }
-
+            info.enemyChoice = Random.Range(0, 2);
             farthestSpawn.GetComponent<RespawnScript>().Respawn(info.enemyCharacters[info.enemyChoice]);
         }
         else

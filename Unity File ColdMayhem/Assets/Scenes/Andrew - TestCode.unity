@@ -619,11 +619,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4611285791330117224, guid: b9df482f5687bd747b2ff73dda296bec,
-        type: 3}
-      propertyPath: respawnTime
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 9175672890857206224, guid: b9df482f5687bd747b2ff73dda296bec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -684,11 +679,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoSpawn (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 9175672890857206231, guid: b9df482f5687bd747b2ff73dda296bec,
-        type: 3}
-      propertyPath: m_TagString
-      value: AmmoPickup
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9df482f5687bd747b2ff73dda296bec, type: 3}
 --- !u!1001 &7681478864459496260
@@ -698,11 +688,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7681478863979480383, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7681478864947743278, guid: 74344f5a83147274b8041828c8523ffb,
         type: 3}
       propertyPath: playerRespawn
@@ -722,11 +707,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RespawnCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 7681478865155356809, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7681478865155356820, guid: 74344f5a83147274b8041828c8523ffb,
         type: 3}
@@ -792,12 +772,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8662436314938439148, guid: 19b203092f7bd134aa9bb5f6c456fcae,
-        type: 3}
-      propertyPath: playerCharacters.Array.data[1]
-      value: 
-      objectReference: {fileID: 1595729923128830980, guid: ad88d8cb13c78844aa5f9d1bff6598c4,
-        type: 3}
     - target: {fileID: 8662436314938439149, guid: 19b203092f7bd134aa9bb5f6c456fcae,
         type: 3}
       propertyPath: m_LocalPosition.x

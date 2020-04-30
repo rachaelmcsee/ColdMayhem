@@ -46,9 +46,10 @@ MonoBehaviour:
   playerLives: 3
   enemyLives: 3
   playerCharacters:
-  - {fileID: 2462719280193145276, guid: 92927c79ec5783542a82fdd1c33c9dd7, type: 3}
-  - {fileID: 2462719280193145276, guid: 163fa67637b26c949befe8db6cfdd99f, type: 3}
+  - {fileID: 7376165964721503141, guid: 9fdcfa86633f7774ea2233cbb18e337c, type: 3}
+  - {fileID: 3476159450707570019, guid: fd8be8fbbca828747b5a4b7c08d06726, type: 3}
   enemyCharacters:
-  - {fileID: 6357450221875571726, guid: 8f919bd29ba10cd45a9e16c46881b672, type: 3}
+  - {fileID: 7273848852752056670, guid: 40bafc9fe78b9ac418f73f544f10ef79, type: 3}
+  - {fileID: 169515496399162588, guid: ffc03d787f2da0f49a5464f4d0ddb78b, type: 3}
   playerChoice: 0
   enemyChoice: 0

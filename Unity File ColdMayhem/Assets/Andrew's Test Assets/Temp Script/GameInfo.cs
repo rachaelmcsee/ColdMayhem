@@ -15,5 +15,8 @@ public class GameInfo : MonoBehaviour
     public int playerChoice = 0;
     public int enemyChoice = 0;
 
-
+    private void Start()
+    {
+        enemyChoice = Random.Range(0, 2);
+    }
 }
