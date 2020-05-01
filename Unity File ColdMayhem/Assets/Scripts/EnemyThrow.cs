@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class EnemyThrow : MonoBehaviour
 {
-
-
+    //a varaible for the enemyMovement script
+    public EnemyMovement thisMovement;
     //declarign variables
     public float chargePower = 1;
     public float throwStrength = 10f;
@@ -47,7 +47,7 @@ public class EnemyThrow : MonoBehaviour
     {
         //setting the current ammo to the max ammo and then getting a refference to the movement and sight scripts
         curAmmo = maxAmmo;
-
+        thisMovement = this.gameObject.GetComponent<EnemyMovement>();
 
         InvokeRepeating("AttemptThrow", 0, .1f);
         InvokeRepeating("CheckAmmo", 8, 1);
@@ -111,6 +111,7 @@ public class EnemyThrow : MonoBehaviour
     //learned this code from the youtuber Renaissance Coders on how to make a cannon I had to modify it for a charging affect and charging bar.
     public void ThrowSnow()
     {
+        thisMovement.Throw();
         //setting the spawn of the snowball to the same rotation of the player camera
         //releasePos.rotation = transform.rotation;
         //spawning the snowball under the name snowballCopy

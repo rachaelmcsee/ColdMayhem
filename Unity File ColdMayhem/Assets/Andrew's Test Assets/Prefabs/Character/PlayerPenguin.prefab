@@ -590,6 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e00571f648c72d478c2118f065bf0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisAnimator: {fileID: 5597359513570462228}
   empty: {fileID: 0}
   opponentTag: Enemy
   maxHP: 30

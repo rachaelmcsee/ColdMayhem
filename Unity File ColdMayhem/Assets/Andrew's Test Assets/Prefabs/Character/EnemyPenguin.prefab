@@ -808,7 +808,7 @@ Animator:
   m_GameObject: {fileID: 7273848852752056670}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e0ca0623dd4ddfe44aded3e76d58935a, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fb593d5cd4cf8fc4b873dc8bb240fdff, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -885,6 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa8da71dcd63374d9369396794ce23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisMovement: {fileID: 0}
   chargePower: 1
   throwStrength: 10
   releasePos: {fileID: 929645170436249365}
@@ -926,6 +927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b84a6708ecffa4e95ef2f62e333a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisAnimator: {fileID: 0}
+  thisThrow: {fileID: 0}
   target: {fileID: 0}
   toFar: 16
   agent: {fileID: 7273848852752056666}
@@ -945,6 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e00571f648c72d478c2118f065bf0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisAnimator: {fileID: 0}
   empty: {fileID: 0}
   opponentTag: Player
   maxHP: 30

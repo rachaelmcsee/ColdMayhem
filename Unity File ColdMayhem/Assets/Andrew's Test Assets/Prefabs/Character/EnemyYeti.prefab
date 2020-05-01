@@ -52,7 +52,7 @@ Animator:
   m_GameObject: {fileID: 169515496399162588}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 364344858631ec24cbc252f2f051ab22, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ff437090e5fae7641bda6b4a2d29f0fd, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -182,8 +182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11b84a6708ecffa4e95ef2f62e333a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisAnimator: {fileID: 0}
+  thisThrow: {fileID: 0}
   target: {fileID: 0}
-  toFar: 12
+  toFar: 20
   agent: {fileID: 169515496399162563}
   playerDis: 0
   direction: {x: 0, y: 0, z: 0}
@@ -201,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa8da71dcd63374d9369396794ce23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisMovement: {fileID: 0}
   chargePower: 1
   throwStrength: 10
   releasePos: {fileID: 343760911867164764}

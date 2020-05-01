@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     //Making variables for animation
     public Animator thisAnimator;
     bool isWalking;
+    bool isSprinting;
 
     //making the variables for movement
     public CharacterController thisController;
@@ -87,17 +88,30 @@ public class Movement : MonoBehaviour
             //reducing speed based on if they are charging the
             if (thisThrow.isCharging)
             {
+                //making sure the sprinting animation is off
+                thisAnimator.SetBool("isSprinting", false);
                 thisController.Move(move * moveSpeed / 2 * Time.deltaTime);
             }
             else
             {
                 if(Input.GetButton("Sprint"))
                 {
+                    //making the animation for sprint
+                    if (isWalking)
+                    {
+                        thisAnimator.SetBool("isSprinting", true);
+                    }
+                    else
+                    {
+                        thisAnimator.SetBool("isSprinting", false);
+                    }
                     //this uses the characterController and the information above to move the character using the move Method
                     thisController.Move(move * moveSpeed * 1.5f * Time.deltaTime);
                 }
                 else
                 {
+                    //making sure the sprinting animation is off
+                    thisAnimator.SetBool("isSprinting", false);
                     //this uses the characterController and the information above to move the character using the move Method
                     thisController.Move(move * moveSpeed * Time.deltaTime);
                 }
@@ -146,9 +160,6 @@ public class Movement : MonoBehaviour
             thisAnimator.SetBool("isWalkCharging", false);
             thisAnimator.SetBool("isCharging", thisThrow.isCharging);
         }
-            
-        
-
         
     }
 

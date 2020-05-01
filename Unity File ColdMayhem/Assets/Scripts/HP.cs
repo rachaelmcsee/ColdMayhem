@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class HP : MonoBehaviour
 {
+    //animation refference
+    public Animator thisAnimator;
     //this is an empty that holds everything to make the pivit point easy to move.
     public GameObject empty;
     //set this to the tag of the other team
@@ -40,7 +42,11 @@ public class HP : MonoBehaviour
 
     private void Start()
     {
-        //setting the initail values that are based off of public variables
+        //setting the initail values that are based off of public variables and refferences
+        if(thisAnimator == null)
+        {
+            thisAnimator = gameObject.GetComponent<Animator>();
+        }
         info = GameObject.FindGameObjectWithTag("Info").GetComponent<GameInfo>();
         currentHP = maxHP;
         hpBar.maxValue = maxHP;
@@ -83,6 +89,8 @@ public class HP : MonoBehaviour
 
     void DeathParticles()
     {
+        //freezing animation
+        thisAnimator.speed = 0f;
         //making the position for the particle spawn
         particleSpawn = transform.position;
         particleSpawn.y += particleOffset;
@@ -96,7 +104,7 @@ public class HP : MonoBehaviour
         float farthestDis = 0;
         float dis;
         GameObject farthestSpawn = null;
-
+        
         //reduces the lives of the appropriate team
         if (this.tag == "Enemy")
         {
