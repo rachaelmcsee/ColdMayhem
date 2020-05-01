@@ -109,7 +109,7 @@ public class Movement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         thisController.Move(velocity * Time.deltaTime);
-
+        //checking if the player is falling or not
         if (!isGrounded)
         {
             thisAnimator.SetBool("isFalling", true);
@@ -136,8 +136,9 @@ public class Movement : MonoBehaviour
             else
             {
                 thisAnimator.SetBool("isWalkCharging", false);
-                thisAnimator.SetBool("isWalking", true);
+                
             }
+            thisAnimator.SetBool("isWalking", true);
         }
         else
         {
