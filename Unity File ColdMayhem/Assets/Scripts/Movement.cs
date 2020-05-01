@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     //making the variables for movement
     public CharacterController thisController;
     public float moveSpeed = 10f;
+    public float sprintMult = 1.5f;
     //making the variables for falling/jumping
     public float gravity = -10f;
     Vector3 velocity;
@@ -106,7 +107,7 @@ public class Movement : MonoBehaviour
                         thisAnimator.SetBool("isSprinting", false);
                     }
                     //this uses the characterController and the information above to move the character using the move Method
-                    thisController.Move(move * moveSpeed * 1.5f * Time.deltaTime);
+                    thisController.Move(move * moveSpeed * sprintMult * Time.deltaTime);
                 }
                 else
                 {

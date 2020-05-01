@@ -569,6 +569,7 @@ MonoBehaviour:
   thisAnimator: {fileID: 5597359513570462228}
   thisController: {fileID: 7376165964721503142}
   moveSpeed: 7
+  sprintMult: 2.5
   gravity: -10
   bottom: {fileID: 7376165965730453608}
   groundMask:
