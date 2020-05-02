@@ -40,7 +40,6 @@ public class EnemyMovement : MonoBehaviour
         //getting references to the animator and EnemyThrow script
         thisAnimator = this.gameObject.GetComponent<Animator>();
         thisThrow = this.gameObject.GetComponent<EnemyThrow>();
-
         //getting HP info
         hp = GetComponent<HP>();
         ChangeDistance(toFar);
@@ -88,7 +87,7 @@ public class EnemyMovement : MonoBehaviour
             else
             {
                 thisAnimator.SetBool("isWalkCharging", false);
-
+                thisAnimator.SetBool("isCharging", thisThrow.isCharging);
             }
             thisAnimator.SetBool("isWalking", true);
         }
@@ -98,6 +97,7 @@ public class EnemyMovement : MonoBehaviour
             thisAnimator.SetBool("isWalkCharging", false);
             thisAnimator.SetBool("isCharging", thisThrow.isCharging);
         }
+        
 
     }
 

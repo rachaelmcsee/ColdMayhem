@@ -50,10 +50,10 @@ CharacterController:
   m_Height: 9.6
   m_Radius: 1.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.7
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2.8, z: -0.2}
+  m_Center: {x: 0, y: 0, z: -0.2}
 --- !u!114 &3476159450707570017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   thisAnimator: {fileID: 7199537301637204333}
   thisController: {fileID: 3476159450707570016}
   moveSpeed: 4
+  sprintMult: 1.5
   gravity: -10
   bottom: {fileID: 5195273843039899653}
   groundMask:
@@ -1288,7 +1289,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 364344858631ec24cbc252f2f051ab22,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8899999
+      value: -4.64
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 364344858631ec24cbc252f2f051ab22,
         type: 3}

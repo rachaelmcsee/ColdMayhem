@@ -97,7 +97,7 @@ CharacterController:
   m_Height: 9.6
   m_Radius: 1.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 4.7, z: -0.2}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e00571f648c72d478c2118f065bf0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisAnimator: {fileID: 0}
   empty: {fileID: 0}
   opponentTag: Player
   maxHP: 30
@@ -185,7 +186,7 @@ MonoBehaviour:
   thisAnimator: {fileID: 0}
   thisThrow: {fileID: 0}
   target: {fileID: 0}
-  toFar: 20
+  toFar: 45
   agent: {fileID: 169515496399162563}
   playerDis: 0
   direction: {x: 0, y: 0, z: 0}
@@ -232,7 +233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetVisible: 0
-  range: 40
+  range: 60
+  test: 0
 --- !u!1 &343760910975495589
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +395,7 @@ MonoBehaviour:
   tilt: {x: 0, y: 0, z: 0, w: 0}
   angle: 0
   angleSpeed: 5
+  heightDif: 0
   movement: {fileID: 169515496399162591}
   sight: {fileID: 169515496399162589}
 --- !u!1 &343760911780069856
@@ -506,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343760911867164763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.92}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 343760911056999269}

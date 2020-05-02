@@ -57,7 +57,7 @@ public class EnemyThrow : MonoBehaviour
     {
         
         //creating a series of if statements to judge the distance
-        if (sight.targetVisible)
+        if (sight.targetVisible && shouldFire)
         {
             isCharging = true;
             
