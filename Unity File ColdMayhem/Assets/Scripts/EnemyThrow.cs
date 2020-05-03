@@ -6,15 +6,15 @@ using UnityEngine.UI;
 
 public class EnemyThrow : MonoBehaviour
 {
-
-
+    //a varaible for the enemyMovement script
+    public EnemyMovement thisMovement;
     //declarign variables
     public float chargePower = 1;
     public float throwStrength = 10f;
     public Transform releasePos;
     public GameObject snowball;
     Rigidbody snowballRB;
-    int chargeAmount = 120;
+    int chargeAmount = 80;
     //determines how much longer after max charge you can hold the snowball and how long it takes to fully charge
     //remember that if you change the charge time or maxHold time then you have to change the movement penalty time!!!
     public float totalChargeTime = 2;
@@ -37,7 +37,7 @@ public class EnemyThrow : MonoBehaviour
     //getting information form the enemy sight script in order to decide if the Enemy will try to fire
     public EnemySight sight;
     public bool isEnemy = true;
-    bool shouldFire = true;
+    public bool shouldFire = true;
 
     
 
@@ -47,7 +47,7 @@ public class EnemyThrow : MonoBehaviour
     {
         //setting the current ammo to the max ammo and then getting a refference to the movement and sight scripts
         curAmmo = maxAmmo;
-
+        thisMovement = this.gameObject.GetComponent<EnemyMovement>();
 
         InvokeRepeating("AttemptThrow", 0, .1f);
         InvokeRepeating("CheckAmmo", 8, 1);
@@ -57,7 +57,7 @@ public class EnemyThrow : MonoBehaviour
     {
         
         //creating a series of if statements to judge the distance
-        if (sight.targetVisible)
+        if (sight.targetVisible && shouldFire)
         {
             isCharging = true;
             
@@ -71,6 +71,11 @@ public class EnemyThrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if(player == null)
+        {
+            shouldFire = false;
+        }
         //checking if they are holding the left mouse button
         if (isCharging && hasAmmo && shouldFire)
         {
@@ -106,6 +111,7 @@ public class EnemyThrow : MonoBehaviour
     //learned this code from the youtuber Renaissance Coders on how to make a cannon I had to modify it for a charging affect and charging bar.
     public void ThrowSnow()
     {
+        thisMovement.Throw();
         //setting the spawn of the snowball to the same rotation of the player camera
         //releasePos.rotation = transform.rotation;
         //spawning the snowball under the name snowballCopy
@@ -147,10 +153,10 @@ public class EnemyThrow : MonoBehaviour
 
         //getting a reference to the movement so that the target can be set to the ammo and to the nav mesh so that the stopping distance can be changed to 0 so the AI will walk all the way to the pickup
         EnemyMovement movement = GetComponent<EnemyMovement>();
-        
 
 
-        if (curAmmo <= maxAmmo - 5)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (curAmmo <= maxAmmo - 5 || player == null)
         {
             //making variables and arrays that store the information of the ammo pickups so that the AI can seek them out 
             GameObject[] ammoPickups = GameObject.FindGameObjectsWithTag("AmmoPickup");

@@ -7,6 +7,9 @@ TagManager:
   - Snowball
   - Enemy
   - AmmoPickup
+  - Info
+  - Victory
+  - RespawnCam
   layers:
   - Default
   - TransparentFX

@@ -581,6 +581,7 @@ MonoBehaviour:
   curAmmo: 0
   isCharging: 0
   sight: {fileID: 4802282109988924277}
+  isEnemy: 1
   test: 0
 --- !u!143 &1524310534
 CharacterController:

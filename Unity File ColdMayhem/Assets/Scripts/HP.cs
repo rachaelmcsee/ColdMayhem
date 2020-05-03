@@ -7,13 +7,15 @@ using UnityEngine.UI;
 
 public class HP : MonoBehaviour
 {
-    //storing the prefab of this character
-    public GameObject thisPrefab;
+    //animation refference
+    public Animator thisAnimator;
+    //this is an empty that holds everything to make the pivit point easy to move.
+    public GameObject empty;
     //set this to the tag of the other team
     public string opponentTag;
 
     //Declaring variables
-    public int maxHP = 100;
+    public int maxHP = 30;
     public int currentHP;
     public ParticleSystem KO_Particle;
     public Text hpDisplay;
@@ -23,12 +25,29 @@ public class HP : MonoBehaviour
     public Gradient hpGradient;
     public Image hpFill;
 
+    //making an offset for the death particles
+    public float particleOffset = 0;
+    Vector3 particleSpawn;
+
+    //making variables used for game info and to store lives
+    GameInfo info;
+    int yourLives;
+    public GameObject respawnCam;
+
     //making a bool to state that the enemy is dead so that they won't try to respawn 2 times
     bool isDead = false;
 
+    //this is a button that can return to the main menu when the game is over
+    public GameObject menuButton;
+
     private void Start()
     {
-        //setting the initail values that are based off of public variables
+        //setting the initail values that are based off of public variables and refferences
+        if(thisAnimator == null)
+        {
+            thisAnimator = gameObject.GetComponent<Animator>();
+        }
+        info = GameObject.FindGameObjectWithTag("Info").GetComponent<GameInfo>();
         currentHP = maxHP;
         hpBar.maxValue = maxHP;
         hpBar.value = currentHP;
@@ -70,8 +89,13 @@ public class HP : MonoBehaviour
 
     void DeathParticles()
     {
+        //freezing animation
+        thisAnimator.speed = 0f;
+        //making the position for the particle spawn
+        particleSpawn = transform.position;
+        particleSpawn.y += particleOffset;
         //creating particles for the death and then calling on the death method on a delay
-        Instantiate(KO_Particle, transform.position, transform.rotation);
+        Instantiate(KO_Particle, particleSpawn, transform.rotation);
         Invoke("Death", .5f);
     }
     void Death()
@@ -80,24 +104,67 @@ public class HP : MonoBehaviour
         float farthestDis = 0;
         float dis;
         GameObject farthestSpawn = null;
-
-
-        //finding all respawn locations then finding the farthest one from the enemy
-        GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
-        foreach(GameObject spawnPoint in spawnPoints)
+        
+        //reduces the lives of the appropriate team
+        if (this.tag == "Enemy")
         {
-            //finding the distance of the spawn then checking if it is farther then the previous farthest if so assigning to the temp variables
-            dis = spawnPoint.GetComponent<RespawnScript>().checkDis(opponentTag);
-            if(dis > farthestDis)
+            info.enemyLives -= 1;
+            yourLives = info.enemyLives;
+        }
+        else
+        {
+            if(this.tag == "Player")
             {
-                farthestDis = dis;
-                farthestSpawn = spawnPoint;
+                info.playerLives -= 1;
+                yourLives = info.playerLives;
             }
         }
 
-        farthestSpawn.GetComponent<RespawnScript>().Respawn(thisPrefab);
+        if(yourLives > 0 && this.tag == "Enemy")
+        {
+            //finding all respawn locations then finding the farthest one from the enemy
+            GameObject[] spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
+            foreach (GameObject spawnPoint in spawnPoints)
+            {
+                //finding the distance of the spawn then checking if it is farther then the previous farthest if so assigning to the temp variables
+                dis = spawnPoint.GetComponent<RespawnScript>().checkDis(opponentTag);
+                if (dis > farthestDis)
+                {
+                    farthestDis = dis;
+                    farthestSpawn = spawnPoint;
+                }
+            }
+            info.enemyChoice = Random.Range(0, 2);
+            farthestSpawn.GetComponent<RespawnScript>().Respawn(info.enemyCharacters[info.enemyChoice]);
+        }
+        else
+        {
+            //if the enemy is out of lives then the player will get a victory display message
+            if(this.tag == "Enemy")
+            {
+                Text victoryText = GameObject.FindGameObjectWithTag("Victory").GetComponent<Text>();
+                victoryText.text = "Victory";
+                //this finds the player and sets their is over variables to trues so the player can't move
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                player.GetComponent<Movement>().isOver = true;
+
+                //setting the players return to main menu button to active
+                player.GetComponent<HP>().menuButton.SetActive(true);
+                //setting the LookAround isOver to true
+                GameObject mainCam = GameObject.FindGameObjectWithTag("MainCamera");
+                mainCam.GetComponent<LookAround>().isOver = true;
+            }
+        }
+        
+        if(this.tag == "Player")
+        {
+            respawnCam.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+        }
 
         //deleting the player or entity
+        if (empty != null)
+            Destroy(empty);
         Destroy(gameObject);
     }
 }

@@ -20,6 +20,11 @@ public class ButtonOptions : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void Debug()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     //Below here Arena selection buttons
 
     public void Arena01()

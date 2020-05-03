@@ -14,7 +14,7 @@ public class Throw : MonoBehaviour
     public Transform releasePos;
     public GameObject snowball;
     Rigidbody snowballRB;
-    int chargeAmount = 120;
+    int chargeAmount = 80;
     //determines how much longer after max charge you can hold the snowball and how long it takes to fully charge
     //remember that if you change the charge time or maxHold time then you have to change the movement penalty time!!!
     public float totalChargeTime = 2;
@@ -24,7 +24,7 @@ public class Throw : MonoBehaviour
     public Slider chargeBar;
     public Gradient chargeGradient;
     public Image chargeFill;
-    float chargeTime = 0;
+    public float chargeTime = 0;
 
     //making variables for the Ammo
     public int maxAmmo = 10;
@@ -113,6 +113,8 @@ public class Throw : MonoBehaviour
     //learned this code from the youtuber Renaissance Coders on how to make a cannon I had to modify it for a charging affect and charging bar.
     public void ThrowSnow()
     {
+        //calling on the animation throw
+        thisMovement.Throw();
         //setting the spawn of the snowball to the same rotation of the player camera
         //releasePos.rotation = transform.rotation;
         //spawning the snowball under the name snowballCopy
