@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Arena 2.unity
+=======
+- path: Assets/Scenes/Andrew - TestCode.unity
+>>>>>>> 55d30b206ac1796c9c69ffd73f9d98efacf71a55
   isLoaded: 1
   isActive: 1
   isSubScene: 0
