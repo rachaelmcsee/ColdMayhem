@@ -34,7 +34,6 @@ public class EnemySight : MonoBehaviour
             //checking the ray information for the target and then states if the ray hit the target or not
             if(hit.collider != null)
             {
-                test = true;
                 if (hit.collider.gameObject == moveScript.targetObject)
                 {
                     delay = 1;
@@ -56,6 +55,10 @@ public class EnemySight : MonoBehaviour
                 {
                     targetVisible = false;
                 }
+            }
+            if (moveScript.target == null)
+            {
+                targetVisible = false;
             }
             
         }

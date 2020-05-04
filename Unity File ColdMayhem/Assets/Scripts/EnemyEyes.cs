@@ -22,7 +22,7 @@ public class EnemyEyes : MonoBehaviour
     void Update()
     {
         //this code will tilt up the angel of the shot based on distance
-        if (sight.targetVisible)
+        if (sight.targetVisible && movement.target != null)
         {
             //checking the height difference of the enemy
             heightDif = movement.target.position.y - transform.position.y;
