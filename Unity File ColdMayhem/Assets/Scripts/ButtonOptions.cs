@@ -7,7 +7,7 @@ public class ButtonOptions : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void ArenaSelect()
@@ -25,19 +25,14 @@ public class ButtonOptions : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene(5);
+    }
+
     //Below here Arena selection buttons
 
-    public void Arena01()
-    {
-        SceneManager.LoadScene(2);
-    }
-
     public void Arena02()
-    {
-        SceneManager.LoadScene(4);
-    }
-
-    public void Arena03()
     {
         SceneManager.LoadScene(4);
     }
@@ -46,9 +41,6 @@ public class ButtonOptions : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
-    public void Arena05()
-    {
-        SceneManager.LoadScene(6);
-    }
+
 }
 
