@@ -34,7 +34,7 @@ public class ButtonOptions : MonoBehaviour
 
     public void Arena02()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(4);
     }
 
     public void Arena03()
@@ -44,7 +44,7 @@ public class ButtonOptions : MonoBehaviour
 
     public void Arena04()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(3);
     }
     public void Arena05()
     {
