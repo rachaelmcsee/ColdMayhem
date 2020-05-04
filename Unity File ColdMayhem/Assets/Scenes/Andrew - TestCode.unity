@@ -728,39 +728,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7681478863863202093, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 7277744aec4b8c242ae9c79b73b9a264,
-        type: 3}
-    - target: {fileID: 7681478863979480383, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7681478864127678171, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7681478864183436050, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: b3176a52289190f41b9d7308fa0f35ee,
-        type: 3}
-    - target: {fileID: 7681478864668164495, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7681478864695736564, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: b3176a52289190f41b9d7308fa0f35ee,
-        type: 3}
     - target: {fileID: 7681478864947743278, guid: 74344f5a83147274b8041828c8523ffb,
         type: 3}
       propertyPath: playerRespawn
@@ -780,11 +747,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RespawnCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 7681478865155356809, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7681478865155356820, guid: 74344f5a83147274b8041828c8523ffb,
         type: 3}
@@ -841,24 +803,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7681478865169852325, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 7277744aec4b8c242ae9c79b73b9a264,
-        type: 3}
-    - target: {fileID: 7681478865280074241, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: b3176a52289190f41b9d7308fa0f35ee,
-        type: 3}
-    - target: {fileID: 7681478865396757366, guid: 74344f5a83147274b8041828c8523ffb,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: b3176a52289190f41b9d7308fa0f35ee,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74344f5a83147274b8041828c8523ffb, type: 3}
 --- !u!1001 &8662436315028498182
@@ -1006,11 +950,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4611285791330117224, guid: b9df482f5687bd747b2ff73dda296bec,
-        type: 3}
-      propertyPath: respawnTime
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 9175672890857206224, guid: b9df482f5687bd747b2ff73dda296bec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1070,11 +1009,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AmmoSpawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 9175672890857206231, guid: b9df482f5687bd747b2ff73dda296bec,
-        type: 3}
-      propertyPath: m_TagString
-      value: AmmoPickup
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9df482f5687bd747b2ff73dda296bec, type: 3}

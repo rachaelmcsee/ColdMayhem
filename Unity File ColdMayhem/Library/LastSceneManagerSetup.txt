@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Arena 1.unity
-=======
-- path: Assets/Scenes/Arena Select.unity
->>>>>>> master
+- path: Assets/Scenes/Arena 2.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
