@@ -16,12 +16,20 @@ public class RespawnScript : MonoBehaviour
     }
 
     //this method is used for spawning with no delay like both teams at the begining or the player when they hit respawn
-    public void PlayerSpawn(GameObject prefab)
+    public void PlayerSpawn(GameObject prefab, float offset)
     {
         character = prefab;
-        Spawn();
+        Spawn(offset);
     }
-
+    //a spawn overload with an offset
+    void Spawn(float offset)
+    {
+        Vector3 spawnPos = transform.position;
+        spawnPos.y += offset;
+        //spawning the character
+        Instantiate(character, spawnPos, this.transform.rotation);
+    }
+    //a method for spawning characters
     void Spawn()
     {
         //spawning the character
