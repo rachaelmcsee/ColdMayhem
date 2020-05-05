@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3205990259985815438}
   - component: {fileID: 5143335337296951897}
   - component: {fileID: 5143335337296951902}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Igloo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3765327233942758226}
-  m_LocalRotation: {x: 0.99982274, y: 1.4654944e-14, z: -6.758483e-14, w: 0.018830389}
+  m_LocalRotation: {x: -0.9998227, y: 0, z: -0, w: -0.018831067}
   m_LocalPosition: {x: 25.058, y: 5.697, z: -18.907}
-  m_LocalScale: {x: 56.137535, y: 56.137535, z: 56.137535}
+  m_LocalScale: {x: 136.71796, y: 136.71796, z: 136.71796}
   m_Children:
   - {fileID: 5143335337491487736}
   m_Father: {fileID: 0}
@@ -121561,7 +121561,7 @@ GameObject:
   - component: {fileID: 5143335337491487733}
   - component: {fileID: 5143335337491487732}
   - component: {fileID: 5143335337491487735}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
