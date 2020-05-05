@@ -25,8 +25,18 @@ public class StartButton : MonoBehaviour
         //if the lives are the same as when the game started then this is the begining of the game then the player and enemy will be spawned in
         if (info.playerLives == 3)
         {
-            playerRespawn.PlayerSpawn(info.playerCharacters[info.playerChoice]);
-            enemyRespawn.PlayerSpawn(info.enemyCharacters[info.enemyChoice]);
+            if (info.playerChoice == 0)
+            {
+                playerRespawn.PlayerSpawn(info.playerCharacters[info.playerChoice], .4f);
+            }
+            else
+            {
+                if (info.playerChoice == 1)
+                {
+                    playerRespawn.PlayerSpawn(info.playerCharacters[info.playerChoice], 2.65f);
+                }
+            }
+            enemyRespawn.PlayerSpawn(info.enemyCharacters[info.enemyChoice],0);
             spawnText.text = "Respawn";
         }
         else
@@ -48,8 +58,18 @@ public class StartButton : MonoBehaviour
                     farthestSpawn = spawnPoint;
                 }
             }
-
-            farthestSpawn.GetComponent<RespawnScript>().PlayerSpawn(info.playerCharacters[info.playerChoice]);
+            if(info.playerChoice == 0)
+            {
+                farthestSpawn.GetComponent<RespawnScript>().PlayerSpawn(info.playerCharacters[info.playerChoice], .4f);
+            }
+            else
+            {
+                if(info.playerChoice == 1)
+                {
+                    farthestSpawn.GetComponent<RespawnScript>().PlayerSpawn(info.playerCharacters[info.playerChoice], 2.65f);
+                }
+            }
+            
             
             if(info.playerLives <= 1)
             {
