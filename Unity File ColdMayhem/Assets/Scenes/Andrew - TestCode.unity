@@ -753,6 +753,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RespawnCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 7681478865155356809, guid: 74344f5a83147274b8041828c8523ffb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7681478865155356820, guid: 74344f5a83147274b8041828c8523ffb,
         type: 3}
       propertyPath: m_LocalPosition.x
