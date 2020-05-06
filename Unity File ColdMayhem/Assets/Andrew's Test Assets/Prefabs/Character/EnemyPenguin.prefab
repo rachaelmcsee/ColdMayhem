@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetVisible: 0
-  range: 60
+  range: 30
   eyes: {fileID: 929645169875566665}
 --- !u!114 &7273848852752056667
 MonoBehaviour:
@@ -934,7 +934,7 @@ MonoBehaviour:
   thisAnimator: {fileID: 0}
   thisThrow: {fileID: 0}
   target: {fileID: 0}
-  toFar: 30
+  toFar: 35
   agent: {fileID: 7273848852752056666}
   playerDis: 0
   direction: {x: 0, y: 0, z: 0}

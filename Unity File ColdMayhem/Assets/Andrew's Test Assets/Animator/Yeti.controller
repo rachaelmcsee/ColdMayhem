@@ -927,7 +927,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.5548706
   m_TransitionOffset: 0
   m_ExitTime: 0.8439045
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -940,7 +940,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: YetiArmature|Yeti Walk(Loop) 0
-  m_Speed: 1.6
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8996326883907028963}
@@ -954,7 +954,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 379d3f42a8a1e4a42b64fdb7b7bbc62d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 4f97ba69971c46549b26a9a9cbc05369, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
