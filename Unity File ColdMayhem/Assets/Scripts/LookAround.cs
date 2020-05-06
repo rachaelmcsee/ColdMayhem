@@ -17,7 +17,9 @@ public class LookAround : MonoBehaviour
 
     void Start()
     {
+        //locking and hiding the mouse
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -39,7 +41,9 @@ public class LookAround : MonoBehaviour
         }
         else
         {
+            //unlocking the mouse and making it visible again
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         
 
