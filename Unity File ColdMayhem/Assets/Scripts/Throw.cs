@@ -49,7 +49,7 @@ public class Throw : MonoBehaviour
         chargeFill.color = chargeGradient.Evaluate(0f);
         chargeBar.value = chargeTime;
         curAmmo = maxAmmo;
-        displayAmmo.text = curAmmo.ToString();
+        displayAmmo.text = "Snowballs: " + curAmmo.ToString();
         displayAmmo.color = ammoTextGradiant.Evaluate(1f);
         thisMovement = GetComponent<Movement>();
     }
@@ -130,7 +130,7 @@ public class Throw : MonoBehaviour
         isCharging = false;
         //reducing ammo
         --curAmmo;
-        displayAmmo.text = curAmmo.ToString();
+        displayAmmo.text = "Snowballs: " + curAmmo.ToString();
         //setting the has ammo to false if the current ammo drops to 0 or less
         if (curAmmo <= 0)
         {
@@ -152,6 +152,6 @@ public class Throw : MonoBehaviour
             curAmmo = maxAmmo;
         hasAmmo = true;
         displayAmmo.color = ammoTextGradiant.Evaluate(1f);
-        displayAmmo.text = curAmmo.ToString();
+        displayAmmo.text = "Snowballs: " + curAmmo.ToString();
     }
 }

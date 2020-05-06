@@ -874,7 +874,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7681478864407039442}
-        m_MethodName: Selecte
+        m_MethodName: Select
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -896,6 +896,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25373b39020d6e44bad0f62139693d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main: {fileID: 7681478864668164495}
+  characterSelect: {fileID: 7681478865204470141}
   back: {fileID: 7681478864127678171}
 --- !u!1 &7681478864668164495
 GameObject:
@@ -1127,7 +1129,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7681478864879965512}
-        m_MethodName: Selecte
+        m_MethodName: Select
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1149,6 +1151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25373b39020d6e44bad0f62139693d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main: {fileID: 7681478864668164495}
+  characterSelect: {fileID: 7681478865204470141}
   back: {fileID: 7681478864127678171}
 --- !u!1 &7681478864947743276
 GameObject:

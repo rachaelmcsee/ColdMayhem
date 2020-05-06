@@ -6,6 +6,8 @@ public class CharacterSelect : MonoBehaviour
 {
     //declaring a variable to store the reference to the game info so they can change their character
     GameInfo info;
+    public GameObject main;
+    public GameObject characterSelect;
 
     //a variable to store the back button
     public GameObject back;
@@ -15,9 +17,11 @@ public class CharacterSelect : MonoBehaviour
     }
 
     //making a method to change the selected character
-    public void Selecte(int characterInt)
+    public void Select(int characterInt)
     {
         info.playerChoice = characterInt;
         back.SetActive(true);
+        characterSelect.SetActive(false);
+        main.SetActive(true);
     }
 }
