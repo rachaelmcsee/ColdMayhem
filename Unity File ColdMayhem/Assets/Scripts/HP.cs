@@ -40,6 +40,9 @@ public class HP : MonoBehaviour
     //this is a button that can return to the main menu when the game is over
     public GameObject menuButton;
 
+    //this will refference the movement code
+    public Movement movement;
+
     private void Start()
     {
         //setting the initail values that are based off of public variables and refferences
@@ -59,24 +62,49 @@ public class HP : MonoBehaviour
    
     private void OnCollisionEnter(Collision other)
     {
-        //checking if the collision was a snowball
-        if (other.gameObject.tag == "Snowball")
+        if(movement == null)
         {
-            //taking appropriat damage
-            currentHP -= 10;
-            //if the person or object have a health display it adjusts accordingly
-            if (hpDisplay != null)
+            //checking if the collision was a snowball
+            if (other.gameObject.tag == "Snowball")
             {
-                hpDisplay.text = "HP: " + currentHP.ToString();   
+                //taking appropriat damage
+                currentHP -= 10;
+                //if the person or object have a health display it adjusts accordingly
+                if (hpDisplay != null)
+                {
+                    hpDisplay.text = "HP: " + currentHP.ToString();
+                }
+                //if the person or object have a health bar it adjusts accordingly
+                if (hpBar != null)
+                {
+                    hpBar.value = currentHP;
+                    hpFill.color = hpGradient.Evaluate(hpBar.normalizedValue);
+                }
+
             }
-            //if the person or object have a health bar it adjusts accordingly
-            if (hpBar != null)
-            {
-                hpBar.value = currentHP;
-                hpFill.color = hpGradient.Evaluate(hpBar.normalizedValue);
-            }
-                
         }
+        else
+        {
+            //checking if the collision was a snowball
+            if (other.gameObject.tag == "Snowball" && !movement.isOver)
+            {
+                //taking appropriat damage
+                currentHP -= 10;
+                //if the person or object have a health display it adjusts accordingly
+                if (hpDisplay != null)
+                {
+                    hpDisplay.text = "HP: " + currentHP.ToString();
+                }
+                //if the person or object have a health bar it adjusts accordingly
+                if (hpBar != null)
+                {
+                    hpBar.value = currentHP;
+                    hpFill.color = hpGradient.Evaluate(hpBar.normalizedValue);
+                }
+
+            }
+        }
+        
         
         //checking to see if the player is alive
         if (currentHP <= 0 && !isDead)
@@ -146,13 +174,15 @@ public class HP : MonoBehaviour
                 victoryText.text = "Victory";
                 //this finds the player and sets their is over variables to trues so the player can't move
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
-                player.GetComponent<Movement>().isOver = true;
+                if(player != null)
+                    player.GetComponent<Movement>().isOver = true;
 
                 //setting the players return to main menu button to active
                 player.GetComponent<HP>().menuButton.SetActive(true);
                 //setting the LookAround isOver to true
                 GameObject mainCam = GameObject.FindGameObjectWithTag("MainCamera");
-                mainCam.GetComponent<LookAround>().isOver = true;
+                if(mainCam != null)
+                    mainCam.GetComponent<LookAround>().isOver = true;
             }
         }
         

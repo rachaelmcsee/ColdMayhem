@@ -462,6 +462,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -516,6 +518,8 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -1039,7 +1043,7 @@ ScriptsOnlyBuild:
     className: pb_Renderable
   - hash:
       serializedVersion: 2
-      Hash: 4fb1d18930b89f50c5d8cd997d4b4366
+      Hash: 14a8c4a0d7c30b23df2ee1a1a71c30fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterSelect
@@ -1309,4 +1313,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Arena 1.unity
   - Assets/Scenes/Arena 2.unity
   - Assets/Scenes/Credits.unity
-  playerPath: C:/Users/Mac33/Documents/CIT 274/ColdMayhem(Build)/Snow Game Main Menu.exe
+  playerPath: C:/Users/sako3/Desktop/coldMayhem build/Snow Game Main Menu.exe

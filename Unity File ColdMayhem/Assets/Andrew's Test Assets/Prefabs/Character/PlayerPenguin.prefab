@@ -653,6 +653,7 @@ MonoBehaviour:
   particleOffset: 0.5
   respawnCam: {fileID: 0}
   menuButton: {fileID: 7376165963654387723}
+  movement: {fileID: 7376165964721503143}
 --- !u!114 &7376165964721503144
 MonoBehaviour:
   m_ObjectHideFlags: 0
