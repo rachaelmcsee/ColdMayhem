@@ -189,7 +189,7 @@ MonoBehaviour:
   thisAnimator: {fileID: 0}
   thisThrow: {fileID: 0}
   target: {fileID: 0}
-  toFar: 45
+  toFar: 60
   agent: {fileID: 169515496399162563}
   playerDis: 0
   direction: {x: 0, y: 0, z: 0}
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetVisible: 0
-  range: 40
+  range: 60
   eyes: {fileID: 343760911056999268}
 --- !u!82 &495921560
 AudioSource:
