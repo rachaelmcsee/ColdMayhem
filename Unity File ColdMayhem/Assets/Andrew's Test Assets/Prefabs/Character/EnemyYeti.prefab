@@ -211,7 +211,7 @@ MonoBehaviour:
   chargePower: 1
   throwStrength: 10
   releasePos: {fileID: 343760911867164764}
-  snowball: {fileID: 8192997792228245909, guid: 004e58b822123ca4faedaf479026f8f5,
+  snowball: {fileID: 3703258331153063088, guid: 2d1fa97e6b334f5469826bdcc0784c9f,
     type: 3}
   totalChargeTime: 2
   maxHold: 2

@@ -80,7 +80,26 @@ public class HP : MonoBehaviour
                     hpBar.value = currentHP;
                     hpFill.color = hpGradient.Evaluate(hpBar.normalizedValue);
                 }
-
+            }
+            else
+            {
+                //checking if the collision was a Yetiball
+                if (other.gameObject.tag == "Yetiball")
+                {
+                    //taking appropriat damage
+                    currentHP -= 15;
+                    //if the person or object have a health display it adjusts accordingly
+                    if (hpDisplay != null)
+                    {
+                        hpDisplay.text = "HP: " + currentHP.ToString();
+                    }
+                    //if the person or object have a health bar it adjusts accordingly
+                    if (hpBar != null)
+                    {
+                        hpBar.value = currentHP;
+                        hpFill.color = hpGradient.Evaluate(hpBar.normalizedValue);
+                    }
+                }
             }
         }
         else
@@ -102,6 +121,26 @@ public class HP : MonoBehaviour
                     hpFill.color = hpGradient.Evaluate(hpBar.normalizedValue);
                 }
 
+            }
+            else
+            {
+                //checking if the collision was a Yetiball
+                if (other.gameObject.tag == "Yetiball")
+                {
+                    //taking appropriat damage
+                    currentHP -= 15;
+                    //if the person or object have a health display it adjusts accordingly
+                    if (hpDisplay != null)
+                    {
+                        hpDisplay.text = "HP: " + currentHP.ToString();
+                    }
+                    //if the person or object have a health bar it adjusts accordingly
+                    if (hpBar != null)
+                    {
+                        hpBar.value = currentHP;
+                        hpFill.color = hpGradient.Evaluate(hpBar.normalizedValue);
+                    }
+                }
             }
         }
         

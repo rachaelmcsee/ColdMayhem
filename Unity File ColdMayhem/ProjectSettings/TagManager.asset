@@ -10,6 +10,7 @@ TagManager:
   - Info
   - Victory
   - RespawnCam
+  - Yetiball
   layers:
   - Default
   - TransparentFX
