@@ -159,7 +159,9 @@ public class HP : MonoBehaviour
         if(this.tag == "Player")
         {
             respawnCam.SetActive(true);
+            //unlocking the curser and making it visible
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         //deleting the player or entity
