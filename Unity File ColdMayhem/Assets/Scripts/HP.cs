@@ -171,7 +171,8 @@ public class HP : MonoBehaviour
             if(this.tag == "Enemy")
             {
                 Text victoryText = GameObject.FindGameObjectWithTag("Victory").GetComponent<Text>();
-                victoryText.text = "Victory";
+                if(victoryText != null)
+                    victoryText.text = "Victory";
                 //this finds the player and sets their is over variables to trues so the player can't move
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 if(player != null)

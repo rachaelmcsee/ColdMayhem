@@ -853,7 +853,7 @@ CharacterController:
   m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 2.4, z: 0}
+  m_Center: {x: 0, y: 2.45, z: 0}
 --- !u!195 &7273848852752056666
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -918,7 +918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetVisible: 0
   range: 60
-  test: 0
+  eyes: {fileID: 929645169875566665}
 --- !u!114 &7273848852752056667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,6 +994,7 @@ MonoBehaviour:
   particleOffset: 2.5
   respawnCam: {fileID: 0}
   menuButton: {fileID: 0}
+  movement: {fileID: 0}
 --- !u!82 &72895472
 AudioSource:
   m_ObjectHideFlags: 0

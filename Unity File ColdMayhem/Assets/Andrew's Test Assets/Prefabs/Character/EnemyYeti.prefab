@@ -173,6 +173,7 @@ MonoBehaviour:
   particleOffset: 5
   respawnCam: {fileID: 0}
   menuButton: {fileID: 0}
+  movement: {fileID: 0}
 --- !u!114 &169515496399162591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,8 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetVisible: 0
-  range: 60
-  test: 0
+  range: 40
+  eyes: {fileID: 343760911056999268}
 --- !u!82 &495921560
 AudioSource:
   m_ObjectHideFlags: 0

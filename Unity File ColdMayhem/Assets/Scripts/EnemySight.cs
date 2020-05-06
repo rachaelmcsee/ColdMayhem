@@ -12,7 +12,9 @@ public class EnemySight : MonoBehaviour
     //this is used as a buffer because the target is constantly be switched between true and false
     float delay = 0;
 
-    public bool test = false;
+    public GameObject eyes;
+
+    Vector3 direction;
     void Start()
     {
         //getting access to the EnemyMovement script to get target and direction info and repeating the SightCheck every little bit to reduce load on the game
@@ -29,8 +31,9 @@ public class EnemySight : MonoBehaviour
             {
                 delay -= .5f;
             }
+            direction = (moveScript.target.position - eyes.transform.position).normalized;
             //sends out a ray infront of the enemy and sends the data back to the hit variable
-            Physics.Raycast(transform.position, moveScript.direction, out hit, range);
+            Physics.Raycast(eyes.transform.position, direction, out hit, range);
             //checking the ray information for the target and then states if the ray hit the target or not
             if(hit.collider != null)
             {
